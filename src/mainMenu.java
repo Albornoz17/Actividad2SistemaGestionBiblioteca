@@ -1,19 +1,19 @@
 import java.util.Scanner;
 
-public class mainMenu {
-    Scanner sc = new Scanner(System.in);
-    adminUser m_users = new adminUser();
-    adminBook m_books = new adminBook();
+public class mainMenu implements IDatas {
     public static void main(String[] args) {
-        mainMenu l_menu = new mainMenu();
+        m_books.put("El hombre que calculaba","Malba Tahan");
         System.out.println("==========================");
         System.out.println("        BIENVENIDO");
         System.out.println("==========================");
-        l_menu.Option();
+        mainMenu.Option();
     }
-    public void Option() {
+    public static void Option(){
+        Scanner sc = new Scanner(System.in);
+        adminUser l_user = new adminUser();
+        adminBook l_book = new adminBook();
         int l_option = 0;
-        while (l_option < 3) {
+        while (l_option != 4) {
             System.out.println("Que opciones quiere ver:");
             System.out.println("1. Usuarios");
             System.out.println("2. Libros");
@@ -24,19 +24,19 @@ public class mainMenu {
             sc.nextLine();
             switch (l_option) {
                 case 1:
-                    m_users.UserOption();
+                    l_user.UserOption();
                     break;
                 case 2:
-                    m_books.BookOption();
+                    l_book.BookOption();
                     break;
                 case 3:
-                    m_books.GetNewBook();
+                    l_book.GetNewBook();
+                    break;
+                case 4:
+                    System.out.println("*Gracias por visitarnos*");
                     break;
                 default:
-                    if (l_option > 4) {
-                        System.out.println("Opción incorrecta, intente nuevamente");
-                        l_option = 0;
-                    } else System.out.println("Gracias por visitarnos");
+                    System.out.println("*Opción no valida, por favor intente nuevamente*");
                     break;
             }
         }
